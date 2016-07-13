@@ -14,11 +14,11 @@ class Card {
     var cardLabel: String
     var cardValue: UInt
     
-    func validSuit() -> [String] {
+    class func validSuit() -> [String] {
         return ["♠️", "♣️", "♦️", "♥️"]
     }
     
-    func validRank() -> [String] {
+    class func validRank() -> [String] {
         return ["A", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K"]
     }
     
