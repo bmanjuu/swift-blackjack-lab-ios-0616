@@ -9,8 +9,8 @@
 import Foundation
 
 class Deck {
-    var dealtCards : [Card]
-    var undealtCards : [Card]
+    private var dealtCards : [Card]
+    private var undealtCards : [Card]
     var description : String {
         
         var cardDescription = ""
@@ -36,10 +36,11 @@ class Deck {
     }// end of init
     
     
-    func drawCard() {
+    func drawCard() -> Card {
         let nextCard = undealtCards[0]
         undealtCards.removeAtIndex(0)
         dealtCards.append(nextCard)
+        return Card
     }
     
     func shuffle() {
