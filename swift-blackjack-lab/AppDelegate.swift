@@ -13,11 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    /**
-     
-     * Declare any custom properties here.
-     
-     */
+    let dealer : Dealer
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -36,6 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      * Write your playBlackjack method in here
      
      */
+    
+    func playBlackjack() {
+        //init Deck!
+        //shuffle
+        //draw cards - inital round 
+        //check for hits
+        //check for winners/busts(after hitting)/blackjack
+        //awards
+    }
     
 }
 

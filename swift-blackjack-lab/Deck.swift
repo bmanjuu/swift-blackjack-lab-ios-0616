@@ -11,18 +11,7 @@ import Foundation
 class Deck {
     private var dealtCards : [Card]
     private var undealtCards : [Card]
-    var description : String {
-        
-        var cardDescription = ""
-        
-        func cardsInGame() {
-            
-            
-        }
-        
-        return cardDescription
-        
-    }
+    var description : String { return descriptionFunction() }
     
     init() {
         self.dealtCards = []
@@ -40,7 +29,7 @@ class Deck {
         let nextCard = undealtCards[0]
         undealtCards.removeAtIndex(0)
         dealtCards.append(nextCard)
-        return Card
+        return nextCard
     }
     
     func shuffle() {
@@ -50,6 +39,10 @@ class Deck {
         let randomInteger = arc4random_uniform(UInt32(undealtCards.count))
         let randomCard = undealtCards[Int(randomInteger)]
         undealtCards.append(randomCard)
+    }
+    
+    func descriptionFunction() -> String {
+        return "Dealt cards for this round are:\n \(self.dealtCards) \n\n Remaining cards in the deck:\n \(self.undealtCards)" 
     }
     
 }// end of classDeck

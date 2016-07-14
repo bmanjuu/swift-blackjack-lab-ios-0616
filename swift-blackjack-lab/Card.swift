@@ -38,20 +38,3 @@ class Card {
         } // end init
         
     } //end class
-
-
-
-
-
-
-//for rank in ranks {
-//    if rank.index == 0 {
-//        cardWorth = 1
-//    }
-//    else if rank.index > 9 {
-//        cardWorth = 10
-//    }
-//    else {
-//        cardWorth = rank.index
-//    }
-//} // end for loop

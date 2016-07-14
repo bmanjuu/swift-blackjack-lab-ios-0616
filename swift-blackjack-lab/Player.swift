@@ -13,6 +13,7 @@ class Player {
     var cards: [Card] = []
     var stayed : Bool = false
     var tokens : UInt = 100
+    var description : String {return playerDescription() }
     
     var handscore: UInt {
         var totalScore: UInt = 0
@@ -51,9 +52,9 @@ class Player {
     // private func returns the same type that the property is expecting 
     // in property { return BLAHBLAHBLAH } 
     
-//    var description : String {
-//        return ""
-//    }// will do it later :D
+    func playerDescription() -> String {
+        return "Player: \(name) \nCards: \(cards) \nTokens:\(tokens) \nScore: \(handscore)"
+    }
     
     init(name: String) {
         self.name = name
