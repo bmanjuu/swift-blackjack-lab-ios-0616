@@ -87,14 +87,15 @@ class Dealer {
         if roundWinner == "house" {
             house.tokens += bet
             player.tokens -= bet
+            return "\(roundWinner) wins!"
         } else if roundWinner == "player" {
             player.tokens += bet
             house.tokens -= bet
+            return "\(roundWinner) wins!"
         } else {
             return "Game is still in process"
         }
         
-        return "\(roundWinner) is the winner! \(roundWinner) will be awarded \(bet)!"
     }
     
 }
