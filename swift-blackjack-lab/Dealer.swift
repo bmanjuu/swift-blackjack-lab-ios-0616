@@ -14,11 +14,17 @@ class Dealer {
     let player : House
     var bet : UInt = 0
     
+    init(){
+        self.deck = Deck.init()
+        self.house = House.init(name: "House")
+        self.player = House.init(name: "Player")
+    }
+    
     func placeBet(bet: UInt) -> Bool {
 //        var betPlaced : UInt = 0
         if house.wallet > bet && player.tokens > bet {
+            self.bet += bet
             return true
-           self.bet += bet
         } else {
             return false
         }

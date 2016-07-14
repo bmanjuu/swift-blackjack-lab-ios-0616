@@ -14,14 +14,33 @@ class Player {
     var stayed : Bool = false
     var tokens : UInt = 100
     var description : String {return playerDescription() }
+    var aceInHand : Bool = false
     
-    var handscore: UInt {
-        var totalScore: UInt = 0
-            
-        for card in self.cards {
-            totalScore += card.cardValue
+    var handscore: UInt {return calculateScore()}
+    
+    func calculateScore() -> UInt {
+        let currentCard: Card
+        var score: UInt = 0
+        var runningTotal: UInt = 0
+        
+        if currentCard.rank == "A" {
+            aceInHand = true
+            score = checkAce(currentCard)
+        } else {
+            score = currentCard.cardValue
         }
-            return totalScore
+        runningTotal += score
+        
+        return runningTotal
+    }
+    
+    
+    func checkAce(card: Card) -> UInt {
+        var aceValue: UInt = 1
+        if self.handscore <= 11 {
+            aceValue = 10
+        }
+        return aceValue
     }
     
     var blackjack : Bool {

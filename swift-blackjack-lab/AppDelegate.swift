@@ -13,15 +13,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    let dealer : Dealer
+    let dealer : Dealer = Dealer.init()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+//        Deck.init()
+//        Player.init(name: "Player")
+//        House.init(name: "House")
         /*
          
          * Call your custom classes here when running the scheme.
          
          */
+        playBlackjack()
         
         // Do not alter
         return true  //
@@ -34,9 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      */
     
     func playBlackjack() {
-        //init Deck!
-        //shuffle
-        //draw cards - inital round 
+        dealer.deal()
+        dealer.turn(dealer.house)
+        dealer.turn(dealer.player)
+        
+
         //check for hits
         //check for winners/busts(after hitting)/blackjack
         //awards

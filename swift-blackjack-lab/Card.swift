@@ -13,6 +13,7 @@ class Card {
     var rank: String
     var cardLabel: String
     var cardValue: UInt
+    var description : String {return cardLabel}
     
     class func validSuit() -> [String] {
         return ["♠️", "♣️", "♦️", "♥️"]
