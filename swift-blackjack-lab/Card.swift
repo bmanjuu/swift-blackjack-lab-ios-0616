@@ -15,11 +15,11 @@ class Card {
     var cardValue: UInt
     var description : String {return cardLabel}
     
-    class func validSuit() -> [String] {
-        return ["♠️", "♣️", "♦️", "♥️"]
+    class func validSuits() -> [String] {
+        return ["♠︎", "♥︎", "♦︎", "♣︎"]
     }
     
-    class func validRank() -> [String] {
+    class func validRanks() -> [String] {
         return ["A", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K"]
     }
     

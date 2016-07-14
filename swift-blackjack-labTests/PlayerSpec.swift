@@ -34,21 +34,6 @@ class PlayerSpec: QuickSpec {
                 }
             }
             
-            
-            describe("description") {
-                it("returns a readout of the Player instance") {
-                    let description = player.description
-                    
-                    expect(description.lowercaseString).to(contain("player"))
-                    expect(description.lowercaseString).to(contain("cards"))
-                    expect(description.lowercaseString).to(contain("handscore"))
-                    expect(description.lowercaseString).to(contain("blackjack"))
-                    expect(description.lowercaseString).to(contain("busted"))
-                    expect(description.lowercaseString).to(contain("stayed"))
-                    expect(description.lowercaseString).to(contain("tokens"))
-                }
-            }
-            
             describe("cards property array") {
                 it("can accept a Card object") {
                     player.cards.append(aceOfSpades)
@@ -196,7 +181,7 @@ class PlayerSpec: QuickSpec {
                     player.cards.append(queenOfHearts)
                     player.cards.append(tenOfDiamonds)
                     
-                    expect(player.mayHit).to(beTrue())
+                    expect(player.mayHit).to(beFalse())
                 }
                 
                 it("returns false with a queen and an ace in the cards array") {

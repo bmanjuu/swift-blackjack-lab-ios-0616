@@ -9,21 +9,19 @@
 import Foundation
 
 class House : Player {
-    
-    var wallet : UInt
+
     var mustHit : Bool {return mustHitMethod()}
     
     override init(name: String) {
-        self.wallet = 1000
         super.init(name: name)
+        self.tokens = 1000
     }
     
     private func mustHitMethod() -> Bool {
-        if self.handscore >= 17 {
-            return false
-        } else {
+        if handscore < 17 {
             return true
+        } else {
+            return false
         }
     }
-    
 }

@@ -19,28 +19,20 @@ class Player {
     var handscore: UInt {return calculateScore()}
     
     func calculateScore() -> UInt {
-        let currentCard: Card
         var score: UInt = 0
-        var runningTotal: UInt = 0
         
-        if currentCard.rank == "A" {
-            aceInHand = true
-            score = checkAce(currentCard)
-        } else {
-            score = currentCard.cardValue
+        for card in self.cards {
+            score += card.cardValue
+            
+            if card.cardLabel.containsString("A") {
+                aceInHand = true
+            }
         }
-        runningTotal += score
+        if aceInHand && score <= 11 {
+            score += 10
+        }
         
-        return runningTotal
-    }
-    
-    
-    func checkAce(card: Card) -> UInt {
-        var aceValue: UInt = 1
-        if self.handscore <= 11 {
-            aceValue = 10
-        }
-        return aceValue
+        return score
     }
     
     var blackjack : Bool {
@@ -61,10 +53,10 @@ class Player {
     }
     
     var mayHit : Bool {
-        if self.busted == false {
-            return false
-        } else {
+        if !busted && !blackjack && !stayed && handscore <= 16 {
             return true
+        } else {
+            return false
         }
     }
     
@@ -72,7 +64,7 @@ class Player {
     // in property { return BLAHBLAHBLAH } 
     
     func playerDescription() -> String {
-        return "Player: \(name) \nCards: \(cards) \nTokens:\(tokens) \nScore: \(handscore)"
+        return "Player: \(name)\nCards: \(cards)\nTokens:\(tokens)\nCurrent Score: \(handscore)\nStayed: \(stayed)\nBlackjack: \(blackjack)\nBusted: \(busted)"
     }
     
     init(name: String) {
@@ -80,7 +72,7 @@ class Player {
     }
     
     func canPlaceBet(bet: UInt) -> Bool {
-        if self.tokens > bet {
+        if self.tokens >= bet {
             return true
         } else {
             return false

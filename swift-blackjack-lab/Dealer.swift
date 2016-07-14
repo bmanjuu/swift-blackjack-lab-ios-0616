@@ -22,7 +22,7 @@ class Dealer {
     
     func placeBet(bet: UInt) -> Bool {
 //        var betPlaced : UInt = 0
-        if house.wallet > bet && player.tokens > bet {
+        if house.tokens > bet && player.tokens > bet {
             self.bet += bet
             return true
         } else {
@@ -31,14 +31,17 @@ class Dealer {
     }
     
     func deal() {
+        house.stayed = false
+        player.stayed = false
+        house.cards.removeAll()
+        player.cards.removeAll()
+        
         deck.shuffle()
         
-        var dealCardsForNewRound = 0
-        while dealCardsForNewRound < 2 {
-            player.cards.append(deck.drawCard())
-            house.cards.append(deck.drawCard())
-            dealCardsForNewRound += 1
-        }
+        player.cards.append(deck.drawCard())
+        house.cards.append(deck.drawCard())
+        player.cards.append(deck.drawCard())
+        house.cards.append(deck.drawCard())
         
     } //end deal function
     
@@ -69,7 +72,7 @@ class Dealer {
         
         if player.busted || houseHandscore > playerHandscore || houseHandscore == playerHandscore || house.blackjack {
             roundResult = "house"
-        } else if house.busted || playerHandscore > houseHandscore || player.blackjack || (player.cards.count == 5 && player.busted == false) {
+        } else if house.busted || playerHandscore > houseHandscore || player.blackjack || (player.cards.count == 5 && !player.busted) {
             roundResult = "player"
         } else {
             roundResult = "no"
@@ -82,11 +85,13 @@ class Dealer {
         let roundWinner = winner()
         
         if roundWinner == "house" {
-            house.wallet += bet
+            house.tokens += bet
             player.tokens -= bet
-        } else {
+        } else if roundWinner == "player" {
             player.tokens += bet
-            house.wallet -= bet
+            house.tokens -= bet
+        } else {
+            return "Game is still in process"
         }
         
         return "\(roundWinner) is the winner! \(roundWinner) will be awarded \(bet)!"

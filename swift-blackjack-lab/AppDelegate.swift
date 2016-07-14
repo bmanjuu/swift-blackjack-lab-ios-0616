@@ -39,8 +39,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func playBlackjack() {
         dealer.deal()
-        dealer.turn(dealer.house)
-        dealer.turn(dealer.player)
+        
+        for _ in 1 ... 3 {
+            dealer.turn(dealer.player)
+            dealer.turn(dealer.house)
+            dealer.turn(dealer.player)
+            dealer.turn(dealer.house)
+            
+            if dealer.player.busted || dealer.house.busted {
+                break
+            }
+        }
+        
         
 
         //check for hits
